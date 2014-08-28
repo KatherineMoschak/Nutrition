@@ -61,7 +61,7 @@ nav li a{
 #bmiAnswer {
 	text-align: center;
 	font-size:30px;
-	padding:40px;
+	padding:60px;
 	margin-top:0px;
 }
 
@@ -93,6 +93,7 @@ nav li a{
 
 #bodyMeasurements input{
 	width:50px;
+	margin-right:10px;
 }
 
 input#submitBtn{
