@@ -2,15 +2,16 @@ $(document).ready(function(){
 
 
 $('#bodyMeasurements').submit(function(e){
+
 	//initialize variables 
 	var userWeight = null;
 	var userHeightFeet = null;
 	var userFeetInches = null;
-	
 	var weightTest = null;
 	var heightFeetTest = null;
 	var heightInchesTest = null;
 	var bmiFinalNumber = null;
+	var displayText = null;
 
 	userWeight = $('#weightInput').val();
 
@@ -45,37 +46,12 @@ $('#bodyMeasurements').submit(function(e){
 			}
 
 			else {
-				//assuming all numbers are correct so proceeding with BMI calculation
+				//assuming all numbers are correct so proceeding with BMI calculation and then display
 
 				bmiFinalNumber = bmiCalculation (userWeight, userHeightFeet, userFeetInches);
 
-				//A BMI of less than 18 means you are under weight.
-				//A BMI of less than 18.5 indicates you are thin for your height.
-				//A BMI between 18.6 and 24.9 indicates you are at a healthy weight.
-				//A BMI between 25 and 29.9 suggests you are overweight for your height.
-				//A BMI of 30 or greater indicates obesity. 
-
-				switch (true) {
-					case (bmiFinalNumber < 18) :
-						document.write("you are under weight");
-						break;
-					case (bmiFinalNumber <= 18.5) :
-						document.write("you are thin");
-						break;
-					case (bmiFinalNumber <= 24.9) && (bmiFinalNumber >= 18.6) :
-						document.write("you are at a healthy weight");
-						break;
-					case (bmiFinalNumber <= 29.9) && (bmiFinalNumber >= 25) :
-						document.write("you are a little overweight");
-						break;
-					case (bmiFinalNumber >= 30) :
-						document.write("you are overweight");
-						break;
-					default :
-						document.write("yikes - there has been an error");
-						break;
-				} //end switch
-
+				displayText  = displayBmi(bmiFinalNumber);
+				
 			}
 
 		}
@@ -124,5 +100,42 @@ $('#bodyMeasurements').submit(function(e){
 
 	} //end function bmiCalculation
 
-	
+	function displayBmi(bmiFinalNumber){
+
+		var bmiText = null;
+		
+		//A BMI of less than 18 means you are under weight.
+		//A BMI of less than 18.5 indicates you are thin for your height.
+		//A BMI between 18.6 and 24.9 indicates you are at a healthy weight.
+		//A BMI between 25 and 29.9 suggests you are overweight for your height.
+		//A BMI of 30 or greater indicates obesity. 
+
+		switch (true) {
+			case (bmiFinalNumber < 18) :
+					bmiText = "you are under weight";
+					break;
+			case (bmiFinalNumber <= 18.5) :
+					bmiText = "you are thin";
+					break;
+			case (bmiFinalNumber <= 24.9) && (bmiFinalNumber >= 18.6) :
+					bmiText = "you are at a healthy weight";
+					break;
+			case (bmiFinalNumber <= 29.9) && (bmiFinalNumber >= 25) :
+					bmiText = "you are a little overweight";
+					break;
+			case (bmiFinalNumber >= 30) :
+					bmiText = "you are overweight";
+					break;
+			default :
+					bmiText = "yikes - there has been an error";
+					break;
+		} //end switch
+
+		//setting text to display to user
+		document.getElementById("bmiAnswer").innerHTML = bmiText;
+
+		return bmiText
+	}
+
+
 }); //end doc ready

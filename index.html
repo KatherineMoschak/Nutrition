@@ -23,20 +23,24 @@
 	  
    <div class="outer-container">
     <div class="inner-container" id="formSection">
-      
+
       <!-- add input field for weight/height -->
     <form id="bodyMeasurements" action="#">
-   		Weight: <input type="text" id="weightInput"/>
-   		Height: <input type="text" id="heightFeetInput"/>
-   		        <input type="text" id="heightInchesInput"/>
+   		Weight: <input type="text" id="weightInput" value="lb" maxlength="3"/>
+   		Height: <input type="text" id="heightFeetInput" value="feet" maxlength="1"/>
+   		        <input type="text" id="heightInchesInput" value="inches" maxlength="2"/>
 
-   		        <input type="submit"/>
+   		        <input type="submit" id="submitBtn"/>
     </form> 
    
     </div><!--inner-->
   </div> <!--outer-->
 
-
+  <div class="outer-container">
+    <div class="inner-container" id="mainSection">
+       <h3 id="bmiAnswer"></h3>
+    </div><!--inner-->
+  </div> <!--outer-->
 
 
 <!-- Scripts -->
